@@ -2,8 +2,9 @@ import React, { Fragment } from "react";
 import './App.css';
 
 // Components
-
 import InputTodo from "./components/inputTodo" 
+
+
 
 function App() {
   return ( 
