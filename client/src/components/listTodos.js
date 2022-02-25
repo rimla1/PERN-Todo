@@ -12,7 +12,6 @@ const ListTodo = () => {
                 method: "DELETE"
             });
 
-            console.log(deleteTodo)
 
         } catch (err) {
             console.error(err.message)
