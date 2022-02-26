@@ -4,6 +4,23 @@ const EditTodo = ({ todo }) => {
     
     const [description, setDescription] = useState(todo.description)
 
+    //edit description function
+    const updateDescription = async(e) => {
+        e.preventDefault();
+        try {
+            const body = {description};
+            const response = await fetch(`http://localhost:5000/todos/${todo.todo_id}`, {
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            })
+
+            window.location = '/'
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
     return(
     <Fragment >
 
@@ -23,7 +40,7 @@ const EditTodo = ({ todo }) => {
                 <input type="text" className="form-control" value={description} onChange={e => setDescription(e.target.value)}/>
             </div>
             <div className="modal-footer">
-                <button type="button" className="btn btn-warning" data-bs-dismiss="modal">Edit</button>
+                <button type="button" className="btn btn-warning" data-bs-dismiss="modal" onClick={e => updateDescription(e)}>Edit</button>
                 <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
             </div>
             </div>
